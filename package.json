@@ -1,0 +1,25 @@
+{
+  "name": "sinnerschrader-reboot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SinnerSchrader website reboot",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "watch": "npx @11ty/eleventy --serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinnerschrader/sinnerschrader-reboot.git"
+  },
+  "author": "SinnerSchrader",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sinnerschrader/sinnerschrader-reboot/issues"
+  },
+  "homepage": "https://github.com/sinnerschrader/sinnerschrader-reboot#readme"
+}
