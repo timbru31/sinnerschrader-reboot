@@ -1,6 +1,9 @@
-$color: lightblue;
+// core
+@import "./core/base";
+@import "./core/fonts";
+@import "./core/grid";
+@import "./core/variables";
 
-body {
-	position: sticky;
-	background-color: $color;
-}
+// includes
+@import "./includes/footer";
+@import "./includes/header";
