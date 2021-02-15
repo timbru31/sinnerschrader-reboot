@@ -7,13 +7,14 @@
   "scripts": {
     "postinstall": "husky install",
     "start": "npm run start:dev",
-    "start:dev": "run-p clean 11ty:watch esbuild:watch",
+    "start:dev": "run-p clean 11ty:watch esbuild:watch responsiveImages",
     "build": "run-s clean esbuild:build 11ty:build",
     "clean": "rimraf ./_site/",
     "11ty:build": "eleventy",
     "11ty:watch": "eleventy --serve",
     "esbuild:build": "esbuild ./_includes/js/main.js --outfile=_site/bundle.js --bundle",
-    "esbuild:watch": "esbuild ./_includes/js/main.js --outfile=_site/bundle.js --bundle --watch"
+    "esbuild:watch": "esbuild ./_includes/js/main.js --outfile=_site/bundle.js --bundle --watch",
+    "responsiveImages": "rimraf ./_site/assets/images/ && node sharp.js"
   },
   "dependencies": {
     "@glidejs/glide": "^3.4.1"
@@ -26,6 +27,7 @@
     "esbuild": "^0.8.44",
     "fibers": "^5.0.0",
     "fs-extra": "^9.1.0",
+    "glob": "^7.1.6",
     "html-minifier": "^4.0.0",
     "husky": "^5.0.9",
     "lint-staged": "^10.5.4",
@@ -33,7 +35,8 @@
     "postcss": "^8.2.6",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
-    "sass": "^1.32.7"
+    "sass": "^1.32.7",
+    "sharp": "^0.27.1"
   },
   "repository": {
     "type": "git",
