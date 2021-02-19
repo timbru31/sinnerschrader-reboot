@@ -1,5 +1,5 @@
 export class Locations {
-	data = LOCATION_DATA;
+	data = {};
 
 	BUTTON_NAME = "locations__navigation-button";
 	CONTENT_NAME = "locations__content";
@@ -14,12 +14,20 @@ export class Locations {
 	timeouts = [];
 
 	constructor() {
+		fetch("./data/locations.json")
+			.then((response) => response.json())
+			.then((json) => this.init(json))
+			.catch((error) => console.error("Couldn't fetch locations data: " + error));
+	}
+
+	init = (jsonData) => {
+		this.data = jsonData;
+
 		this.loadLocationContainers();
 		this.loadLocationLinks();
 		this.loadLocationIndicator();
-
 		this.renderSelectedLocation(this.data[0].name);
-	}
+	};
 
 	linkId = (locationName) => `${this.BUTTON_NAME}-${locationName}`;
 	contentClassName = (locationName) => `${this.CONTENT_NAME}-${locationName}`;
@@ -53,7 +61,7 @@ export class Locations {
 			const isSelected = button.id === this.linkId(newName);
 
 			if (isSelected) {
-				this.locationIndicator.style.top = button.offsetTop + button.clientHeight / 2;
+				this.locationIndicator.style.top = button.offsetTop + button.clientHeight / 2 + "px";
 				button.classList.add(this.BUTTON_SELECTED_CLASS);
 			} else {
 				button.classList.remove(this.BUTTON_SELECTED_CLASS);
