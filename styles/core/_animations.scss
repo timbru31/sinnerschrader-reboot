@@ -34,6 +34,14 @@
 		&:nth-child(2) {
 			animation-delay: 3s;
 		}
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none;
+
+			&:nth-child(1) {
+				opacity: 1;
+			}
+		}
 	}
 }
 
@@ -55,7 +63,9 @@
 		top: 90%;
 		transform-origin: 100% 50%;
 		transform: scale3d(0, 1, 1);
-		transition: transform 0.3s;
+		@media (prefers-reduced-motion: no-preference) {
+			transition: transform 0.3s;
+		}
 	}
 
 	&:hover::before {
