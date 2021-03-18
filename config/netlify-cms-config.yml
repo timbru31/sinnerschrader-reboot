@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: timbru31/sinnerschrader-reboot
+  branch: staging
 media_folder: "_includes/assets/images"
 publish_mode: editorial_workflow
 collections:
