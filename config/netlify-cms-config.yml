@@ -5,8 +5,8 @@ backend:
 media_folder: "_includes/assets/images"
 publish_mode: editorial_workflow
 collections:
-  - label: "Jobs"
-    name: "jobs"
+  - label: "Job"
+    name: "job"
     folder: "src/jobs"
     create: true
     delete: true
