@@ -10,11 +10,11 @@ collections:
     folder: "src/jobs"
     create: true
     delete: true
-    slug: "{{title}}-{{location}}-{slug}}"
+    slug: "{{title}}-{{location}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Location", name: "location", widget: "string" }
-      - { label: "Level", name: "Level", widget: "string" }
+      - { label: "Level", name: "level", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Date", name: "date", widget: "date", default: "" }
       - { label: "Job Body", name: "body", widget: "markdown" }
