@@ -5,7 +5,7 @@ permalink: /jobs/
 homepage: false
 ---
 
-{% include navigation %}
+{% include navigation, data: global %}
 
 <ul>
   {% for job in collections.jobs %}
@@ -21,4 +21,4 @@ homepage: false
   {% endfor %}
 </ul>
 
-{% include footer %}
+{% include footer, data: global %}
