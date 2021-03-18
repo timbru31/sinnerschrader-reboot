@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head %}
+
+<body>
+    <h2>{{ title }}</h2>
+    <h3>{{ date | readableDate }}</h3>
+    <p>{{ content | safe }}</p>
+</body>
+
+</html>

@@ -10,15 +10,15 @@ const processSassFiles = require("./config/process-sass");
 
 module.exports = (eleventyConfig) => {
 	if (process.argv.includes("--serve")) {
-		const watcher = chokidar.watch("styles/{includes,core}/*.scss", {
+		const watcher = chokidar.watch("./src/styles/{includes,core}/*.scss", {
 			ignored: /(^|[\/\\])\../,
 			persistent: true,
 		});
 		watcher.on("add", touchFile).on("change", touchFile);
 	}
-	processSassFiles("./styles/index.scss", "./_includes/css/main.css");
+	processSassFiles("./src/styles/index.scss", "./src/_includes/css/main.css");
 
-	eleventyConfig.setTemplateFormats(["liquid", "njk"]);
+	eleventyConfig.setTemplateFormats(["md", "liquid", "njk"]);
 
 	eleventyConfig.addTransform("async-transform-name", async (content, outputPath) => {
 		if (outputPath.endsWith(".css")) {
@@ -50,22 +50,26 @@ module.exports = (eleventyConfig) => {
 	});
 
 	eleventyConfig.addPassthroughCopy({
-		"./_includes/assets/fonts": "./assets/fonts",
-		"./_includes/assets/videos": "./assets/videos",
-		"./_includes/assets/svg": "./assets/svg",
-		"./_includes/assets/meta-assets": "./assets/meta-assets",
-		"./_includes/data/*": "./data/",
+		"./src/_includes/assets/fonts": "./assets/fonts",
+		"./src/_includes/assets/videos": "./assets/videos",
+		"./src/_includes/assets/svg": "./assets/svg",
+		"./src/_includes/assets/meta-assets": "./assets/meta-assets",
+		"./src/_includes/data/*": "./data/",
+		"./config/netlify-cms-config.yml": "./admin/config.yml",
+		"./node_modules/netlify-cms/dist/netlify-cms.js": "./netlify-cms.js",
 	});
 
 	return {
 		dir: {
-			data: "./_includes/data/",
-			layouts: "_includes/layouts",
+			input: "./src",
+			layouts: "_layouts",
+			// data: "./_includes/data/",
+			// layouts: "_includes/layouts",
 		},
 	};
 };
 
 function touchFile() {
 	const time = new Date();
-	utimes(join(process.cwd(), "styles/index.scss"), time, time);
+	utimes(join(process.cwd(), "./src/styles/index.scss"), time, time);
 }
